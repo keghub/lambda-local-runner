@@ -15,7 +15,7 @@ namespace LambdaTest
                              .Returns<string>()
                              .UsesFunction<Function>((function, input, context) => function.FunctionHandler(input, context))
                              .Build()
-                             .StartAndWaitAsync();
+                             .RunAsync();
 
         }
     }

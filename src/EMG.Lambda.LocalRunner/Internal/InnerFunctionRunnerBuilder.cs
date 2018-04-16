@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace EMG.Lambda.LocalRunner.Internal
 {
-    internal class InnerFunctionRunnerBuilder<TFunction> : IFunctionRunnerBuilder<TFunction>
+    public class InnerFunctionRunnerBuilder<TFunction> : IFunctionRunnerBuilder<TFunction>
         where TFunction : class, new()
     {
         public int Port { get; set; }

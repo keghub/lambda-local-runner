@@ -4,11 +4,12 @@ using Amazon.Lambda.Serialization.Json;
 
 namespace EMG.Lambda.LocalRunner.Internal
 {
-    internal class InnerRunnerBuilder : IRunnerBuilder
+    public class InnerRunnerBuilder : IRunnerBuilder
     {
-        public int Port { get; protected set; } = 5000;
+        public int Port { get; set; } = 5000;
 
-        public Func<ILambdaSerializer> SerializerFactory { get; protected set; } = () => new JsonSerializer();
+        public Func<ILambdaSerializer> SerializerFactory { get; set; } = () => new JsonSerializer();
+
 
         public IRunnerBuilder UsePort(int port)
         {

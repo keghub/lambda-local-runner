@@ -9,8 +9,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace EMG.Lambda.LocalRunner.Internal
 {
-    internal class InnerReturningRunnerBuilder<TInput, TOutput> : InnerReceivingRunnerBuilder<TInput>, IReturningRunnerBuilder<TInput, TOutput>
+    public class InnerReturningRunnerBuilder<TInput, TOutput> : IReturningRunnerBuilder<TInput, TOutput>
     {
+        public int Port { get; set; }
+
+        public Func<ILambdaSerializer> SerializerFactory { get; set; }
+
+
         public IFunctionRunnerBuilder<TFunction> UsesAsyncFunction<TFunction>(Func<TFunction, TInput, ILambdaContext, Task<TOutput>> executor)
             where TFunction : class, new()
         {

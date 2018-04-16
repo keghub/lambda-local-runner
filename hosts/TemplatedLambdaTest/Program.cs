@@ -14,7 +14,7 @@ namespace TemplatedLambdaTest
                              .Receives<string>()
                              .UsesAsyncFunctionWithNoResult<Function>((function, input, context) => function.FunctionHandlerAsync(input, context))
                              .Build()
-                             .StartAndWaitAsync();
+                             .RunAsync();
         }
     }
 }
