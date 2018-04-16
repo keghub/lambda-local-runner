@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>EMG.Lambda</RootNamespace>
+    <AssemblyName>EMG.Lambda.LocalRunner</AssemblyName>
+    
+    <PackageVersion>1.0.0</PackageVersion>
+    <PackageId>EMG.Lambda.LocalRunner</PackageId>
+    <Authors>EMG</Authors>
+    <PackageProjectUrl>https://github.com/emgdev/lambda-local-runner</PackageProjectUrl>
+    
   </PropertyGroup>
 
   <ItemGroup>
