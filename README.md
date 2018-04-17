@@ -9,7 +9,7 @@ The library creates a small ASP.NET Core application that listens to a port and 
 ## How to use it?
 The best way to run your Lambda functions locally is to create a new console application in your solution and add a reference to the project containing the function.
 
-Once you have added the `EMG.Lambda.Runner` package to your application, you can simply replace your `Main` function with something similar to the following snippet.
+Once you have added the `EMG.Lambda.LocalRunner` package to your application, you can simply replace your `Main` function with something similar to the following snippet.
 
 ```csharp
 LambdaRunner.Create()
@@ -50,6 +50,8 @@ LambdaRunner.Create()
             .RunAsync()
             .Wait();
 ```
+
+[Here](https://github.com/emgdev/lambda-local-runner/wiki/Tutorial) there is a tutorial that helps you creating your first local runner application.
 
 ## Optional parameters
 When constructing your runner, you can customize it by providing two optional parameters: the port to bind and the serializer to use.
