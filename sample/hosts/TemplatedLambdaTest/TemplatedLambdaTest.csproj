@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\functions\TemplatedLambda\TemplatedLambda.csproj" />
-    <ProjectReference Include="..\..\src\EMG.Lambda.LocalRunner\EMG.Lambda.LocalRunner.csproj" />
+    <ProjectReference Include="..\..\..\src\EMG.Lambda.LocalRunner\EMG.Lambda.LocalRunner.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

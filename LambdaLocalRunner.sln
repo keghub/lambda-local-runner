@@ -8,15 +8,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMG.Lambda.LocalRunner", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "functions", "functions", "{0DA4364A-CEC8-46F6-BE55-CEE2719CB48F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambda", "functions\Lambda\Lambda.csproj", "{1EF59DA5-D876-4D40-8E49-05A7848C9F58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambda", "sample\functions\Lambda\Lambda.csproj", "{1EF59DA5-D876-4D40-8E49-05A7848C9F58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplatedLambda", "functions\TemplatedLambda\TemplatedLambda.csproj", "{E5133340-08AC-443B-8871-A0C52580C481}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplatedLambda", "sample\functions\TemplatedLambda\TemplatedLambda.csproj", "{E5133340-08AC-443B-8871-A0C52580C481}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{A6176CB1-26B1-4797-8B3E-7FC7CEB395CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplatedLambdaTest", "hosts\TemplatedLambdaTest\TemplatedLambdaTest.csproj", "{21F7096C-52C1-4388-AB95-A48C2F1EA8CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplatedLambdaTest", "sample\hosts\TemplatedLambdaTest\TemplatedLambdaTest.csproj", "{21F7096C-52C1-4388-AB95-A48C2F1EA8CB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdaTest", "hosts\LambdaTest\LambdaTest.csproj", "{F8E61097-48D8-4F22-AD51-FC801BB99432}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdaTest", "sample\hosts\LambdaTest\LambdaTest.csproj", "{F8E61097-48D8-4F22-AD51-FC801BB99432}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{46BADA25-2BF6-48CD-A41A-1D49D64A7438}"
 EndProject

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\EMG.Lambda.LocalRunner\EMG.Lambda.LocalRunner.csproj" />
+    <ProjectReference Include="..\..\..\src\EMG.Lambda.LocalRunner\EMG.Lambda.LocalRunner.csproj" />
     <ProjectReference Include="..\..\functions\Lambda\Lambda.csproj" />
   </ItemGroup>
 
