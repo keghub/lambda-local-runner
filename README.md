@@ -1,5 +1,5 @@
 # AWS Lambda Local Runner
-This library helps you create a console application that hosts your AWS Lambda function so that you can easily debug its execution.
+This library helps you create a console application that hosts your AWS Lambda function so that you can easily debug its execution. This is important especially when working on a distributed system composed by several services and applications.
 
 **Note**: this works only with AWS Lambda functions based on the `dotnetcore2.0` runtime.
 
@@ -9,7 +9,7 @@ The library creates a small ASP.NET Core application that listens to a port and 
 ## How to use it?
 The best way to run your Lambda functions locally is to create a new console application in your solution and add a reference to the project containing the function.
 
-Once you have add the `EMG.Lambda.Runner` package to your application, you can simply replace your `Main` function with something similar to the following snippet.
+Once you have added the `EMG.Lambda.Runner` package to your application, you can simply replace your `Main` function with something similar to the following snippet.
 
 ```csharp
 LambdaRunner.Create()
