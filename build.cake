@@ -2,7 +2,7 @@
 #addin "nuget:?package=NuGet.Core"
 #tool "nuget:?package=JetBrains.dotCover.CommandLineTools"
 
-var target = Argument("Target", "Build");
+var target = Argument("Target", "Test");
 
 FilePath SolutionFile = MakeAbsolute(File("LambdaLocalRunner.sln"));
 
@@ -42,7 +42,7 @@ Task("Test")
 {
     Information($"Looking for test projects in {testFolder.FullPath}");
 
-    var testProjects = GetFiles(testFolder, "*.csproj", SearchOption.AllDirectories);
+    var testProjects = GetFiles($"{testFolder}/**/*.csproj");
 
     var dotCoverSettings = new DotCoverCoverSettings()
                                     .WithFilter("+:EMG.*")
@@ -66,7 +66,7 @@ Task("Test")
 
         DotCoverCover(context => 
         {
-                context.DotNetCoreTest(project.FullPath, settings);
+            context.DotNetCoreTest(project.FullPath, settings);
         }, coverageResultFile, dotCoverSettings);
 
         if (BuildSystem.IsRunningOnTeamCity)
@@ -75,7 +75,7 @@ Task("Test")
         }
     }
 
-    var coverageFiles = GetFiles(testOutputFolder, "*.dvcr");
+    var coverageFiles = GetFiles($"{testOutputFolder}/*.dvcr");
     DotCoverMerge(coverageFiles, coverageOutputFile);
     DeleteFiles(coverageFiles);
 
@@ -102,29 +102,28 @@ Task("Push")
     .IsDependentOn("Pack")
     .Does(() =>
 {
-    var apiKey = EnvironmentVariable("EMGPrivateApiKey");
-    var source = $"https://www.myget.org/F/emgprivate/auth/{apiKey}/api/v3/index.json";
+    var apiKey = EnvironmentVariable("EMGNugetApiKey");
 
     var settings = new DotNetCoreNuGetPushSettings
     {
-        Source = source,
+        Source = "https://api.nuget.org/v3/index.json",
         ApiKey = apiKey
     };
 
-    var files = GetFiles(outputFolder, "*.nupkg");
+    var files = GetFiles($"{outputFolder}/*.nupkg");
 
     foreach (var file in files)
     {
         var fileName = file.GetFilename();
 
-        if (!IsNuGetPublished(file, $"https://www.myget.org/F/emgprivate/auth/{apiKey}/api/v2"))
+        try
         {
             Information($"Pushing {fileName}");
 
             DotNetCoreNuGetPush(file.FullPath, settings);
             Information($"{fileName} pushed!");
         }
-        else
+        catch (CakeException)
         {
             Warning($"{fileName} already published, removing from artifacts");
             DeleteFile(file);
@@ -132,13 +131,4 @@ Task("Push")
     }
 });
 
-Task("Full")
-    .IsDependentOn("Pack");
-
 RunTarget(target);
-
-public static IEnumerable<FilePath> GetFiles(DirectoryPath directory, string pattern = "*.*", SearchOption option = SearchOption.TopDirectoryOnly)
-{
-    var files = System.IO.Directory.GetFiles(directory.FullPath, pattern, option);
-    return files.Select(file => (FilePath)file);
-}
