@@ -102,7 +102,7 @@ Task("Push")
     .IsDependentOn("Pack")
     .Does(() =>
 {
-    var apiKey = EnvironmentVariable("EMGNugetApiKey");
+    var apiKey = EnvironmentVariable("NugetApiKey");
 
     var settings = new DotNetCoreNuGetPushSettings
     {

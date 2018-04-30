@@ -96,3 +96,7 @@ Adding the following setting in your project file will enable the latest availab
 <LangVersion>latest</LangVersion>
 ```
 Please, make sure to have the latest version of the C# compiler installed on your machine or any build server you might be using.
+
+## How to build
+
+This project uses [Cake](https://cakebuild.net/) as a build engine. If you would like to build the project locally, run the `build.ps1` from a Powershell console and wait for the result.
