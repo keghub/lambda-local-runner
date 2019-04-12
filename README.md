@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/sfrglj9cgb54vfqh?svg=true)](https://ci.appveyor.com/project/EMG/lambda-local-runner) [![EMG Lambda LocalRunner](https://img.shields.io/nuget/v/EMG.Lambda.LocalRunner.svg)](https://www.nuget.org/packages/EMG.Lambda.LocalRunner)
+
 # AWS Lambda Local Runner
 This library helps you create a console application that hosts your AWS Lambda function so that you can easily debug its execution. This is important especially when working on a distributed system composed by several services and applications.
 
@@ -99,4 +101,12 @@ Please, make sure to have the latest version of the C# compiler installed on you
 
 ## How to build
 
-This project uses [Cake](https://cakebuild.net/) as a build engine. If you would like to build the project locally, run the `build.ps1` from a Powershell console and wait for the result.
+This project uses [Cake](https://cakebuild.net/) as a build engine.
+
+If you would like to build Nybus locally, just execute the `build.cake` script.
+
+You can do it by using the .NET tool created by CAKE authors and use it to execute the build script.
+```powershell
+dotnet tool install -g Cake.Tool
+dotnet cake
+```

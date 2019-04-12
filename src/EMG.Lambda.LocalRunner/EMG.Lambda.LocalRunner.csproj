@@ -1,18 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>EMG.Lambda</RootNamespace>
     <AssemblyName>EMG.Lambda.LocalRunner</AssemblyName>
-    
-    <PackageVersion>1.0.1</PackageVersion>
-    <PackageId>EMG.Lambda.LocalRunner</PackageId>
+    <LangVersion>latest</LangVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <Authors>EMG</Authors>
-    <PackageProjectUrl>https://github.com/emgdev/lambda-local-runner</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/emgdev/lambda-local-runner/master/LICENSE</PackageLicenseUrl>
-    <Description>An helper library to quickly create console applications that host locally an AWS Lambda function.</Description>
+    <Company>EMG - Educations Media Group AB</Company>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>EMG.Lambda.LocalRunner</PackageId>
     <PackageTags>dotnet-core aws-lambda aws-lambda-csharp local-development development-utility aws csharp</PackageTags>
+    <Description>An helper library to quickly create console applications that host locally an AWS Lambda function.</Description>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/emgdev/lambda-local-runner</PackageProjectUrl>
     <PackageIconUrl>http://static.emg-services.net/masterpages/pics/logos/emg-icon-64.png</PackageIconUrl>
+    <NoWarn>NU5105,NU5125</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,5 +28,17 @@
     <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.2" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-*" PrivateAssets="All"/>
+    <PackageReference Include="SourceLink.Copy.PdbFiles" Version="2.8.3" PrivateAssets="All" /> 
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
 
 </Project>
