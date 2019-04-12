@@ -184,7 +184,7 @@ Task("UploadTestsToAppVeyor")
     foreach (var file in testResultFiles)
     {
         Information($"\tUploading {file.GetFilename()}");
-        AppVeyor.UploadTestResults(file, AppVeyorTestResultsType.MSTest);
+        //AppVeyor.UploadTestResults(file, AppVeyorTestResultsType.MSTest);
     }
 });
 
