@@ -13,6 +13,8 @@ namespace EMG.Lambda.LocalRunner
         IRunnerBuilder UseSerializer<TSerializer>(Func<TSerializer> serializerFactory)
             where TSerializer : ILambdaSerializer;
 
+        IRunnerBuilder WithResponseContentType(string contentType);
+
         IReceivingRunnerBuilder<TInput> Receives<TInput>();
     }
 

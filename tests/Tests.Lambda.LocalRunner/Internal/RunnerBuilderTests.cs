@@ -17,11 +17,13 @@ namespace Tests.Internal
         {
             sut.UsePort(port);
             sut.UseSerializer(serializerFactory);
+            sut.WithResponseContentType("application/xml");
 
             var result = sut.Receives<string>() as InnerReceivingRunnerBuilder<string>;
             
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Port, Is.EqualTo(sut.Port));
+            Assert.That(result.ResponseContentType, Is.EqualTo(sut.ResponseContentType));
             Assert.That(result.SerializerFactory, Is.EqualTo(sut.SerializerFactory));
         }
 
