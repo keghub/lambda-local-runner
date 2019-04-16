@@ -21,7 +21,8 @@ namespace EMG.Lambda.LocalRunner.Internal
             return new InnerReturningRunnerBuilder<TInput, TOutput>
             {
                 Port = Port,
-                SerializerFactory = SerializerFactory
+                SerializerFactory = SerializerFactory,
+                ResponseContentType = ResponseContentType
             };
         }
 
