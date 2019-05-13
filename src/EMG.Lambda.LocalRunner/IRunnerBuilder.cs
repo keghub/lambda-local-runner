@@ -13,8 +13,6 @@ namespace EMG.Lambda.LocalRunner
         IRunnerBuilder UseSerializer<TSerializer>(Func<TSerializer> serializerFactory)
             where TSerializer : ILambdaSerializer;
 
-        IRunnerBuilder WithResponseContentType(string contentType);
-
         IReceivingRunnerBuilder<TInput> Receives<TInput>();
     }
 
@@ -31,6 +29,8 @@ namespace EMG.Lambda.LocalRunner
 
     public interface IReturningRunnerBuilder<out TInput, TOutput>
     {
+        IReturningRunnerBuilder<TInput, TOutput> WithResponseContentType(string contentType);
+
         IFunctionRunnerBuilder<TFunction> UsesAsyncFunction<TFunction>(Func<TFunction, TInput, ILambdaContext, Task<TOutput>> executor)
             where TFunction : class, new();
 

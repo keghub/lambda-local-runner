@@ -10,8 +10,6 @@ namespace EMG.Lambda.LocalRunner.Internal
 
         public Func<ILambdaSerializer> SerializerFactory { get; set; } = () => new JsonSerializer();
 
-        public string ResponseContentType { get; set; } = "application/json";
-
         public IRunnerBuilder UsePort(int port)
         {
             Port = port;
@@ -30,15 +28,8 @@ namespace EMG.Lambda.LocalRunner.Internal
             return new InnerReceivingRunnerBuilder<TInput>
             {
                 Port = Port,
-                SerializerFactory = SerializerFactory,
-                ResponseContentType = ResponseContentType
+                SerializerFactory = SerializerFactory
             };
-        }
-
-        public IRunnerBuilder WithResponseContentType(string contentType)
-        {
-            ResponseContentType = contentType;
-            return this;
         }
     }
 }

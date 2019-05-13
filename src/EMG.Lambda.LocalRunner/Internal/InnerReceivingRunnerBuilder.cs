@@ -14,15 +14,12 @@ namespace EMG.Lambda.LocalRunner.Internal
         public int Port { get; set; }
 
         public Func<ILambdaSerializer> SerializerFactory { get; set; }
-        public string ResponseContentType { get; internal set; }
-
         public IReturningRunnerBuilder<TInput, TOutput> Returns<TOutput>()
         {
             return new InnerReturningRunnerBuilder<TInput, TOutput>
             {
                 Port = Port,
-                SerializerFactory = SerializerFactory,
-                ResponseContentType = ResponseContentType
+                SerializerFactory = SerializerFactory
             };
         }
 

@@ -17,13 +17,11 @@ namespace Tests.Internal
         {
             sut.UsePort(port);
             sut.UseSerializer(serializerFactory);
-            sut.WithResponseContentType("application/xml");
 
             var result = sut.Receives<string>() as InnerReceivingRunnerBuilder<string>;
             
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Port, Is.EqualTo(sut.Port));
-            Assert.That(result.ResponseContentType, Is.EqualTo(sut.ResponseContentType));
             Assert.That(result.SerializerFactory, Is.EqualTo(sut.SerializerFactory));
         }
 
@@ -65,6 +63,14 @@ namespace Tests.Internal
             var result = sut.UsesFunction(executor) as InnerFunctionRunnerBuilder<object>;
 
             Assert.That(result, Is.Not.Null);
+        }
+
+        [Test, AutoMoqData]
+        public void WithResponseContentType_initializes_content_type(InnerReturningRunnerBuilder<string, string> sut, Func<object, string, ILambdaContext, string> executor, string contentType)
+        {
+            var result = sut.WithResponseContentType(contentType);
+
+            Assert.That(sut.ResponseContentType, Is.EqualTo(contentType));
         }
 
         [Test, AutoMoqData]
