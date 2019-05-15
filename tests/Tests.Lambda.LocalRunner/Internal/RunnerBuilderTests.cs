@@ -13,16 +13,18 @@ namespace Tests.Internal
     public class RunnerBuilderTests
     {
         [Test, AutoMoqData]
-        public void Receives_T_returns_initialized_builder_step(InnerRunnerBuilder sut, int port, Func<ILambdaSerializer> serializerFactory)
+        public void Receives_T_returns_initialized_builder_step(InnerRunnerBuilder sut, int port, Func<ILambdaSerializer> serializerFactory, Func<ILambdaContext> contextFactory)
         {
             sut.UsePort(port);
             sut.UseSerializer(serializerFactory);
+            sut.UseLambdaContext(contextFactory);
 
             var result = sut.Receives<string>() as InnerReceivingRunnerBuilder<string>;
             
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Port, Is.EqualTo(sut.Port));
             Assert.That(result.SerializerFactory, Is.EqualTo(sut.SerializerFactory));
+            Assert.That(result.LambdaContextFactory, Is.EqualTo(sut.LambdaContextFactory));
         }
 
         [Test, AutoMoqData]

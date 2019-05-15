@@ -13,6 +13,9 @@ namespace EMG.Lambda.LocalRunner
         IRunnerBuilder UseSerializer<TSerializer>(Func<TSerializer> serializerFactory)
             where TSerializer : ILambdaSerializer;
 
+        IRunnerBuilder UseLambdaContext<TLambdaContext>(Func<TLambdaContext> lambdaContextFactory)
+            where TLambdaContext : ILambdaContext;
+
         IReceivingRunnerBuilder<TInput> Receives<TInput>();
     }
 

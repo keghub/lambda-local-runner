@@ -75,6 +75,10 @@ If omitted, the default `Amazon.Lambda.Serialization.Json.JsonSerializer` will b
 LambdaRunner.Create().UseSerializer(() => new MyCustomSerializer()) ...
 ```
 
+### Customizing the LambdaContext parameter
+If your function depends on a certain behavior of the object passed for the ILambdaContext parameter, you can specify a context factory while building the runner
+by using the `UseLambdaContext<T>(Funct<T> factory)` method. If omitted the default `TestLambdaContext` will be used.
+
 ## Notes on C# 7.1
 C# 7.1 introduced the support to [async/await directly in the Main method of a console application](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-7-1#async-main).
 

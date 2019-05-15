@@ -14,7 +14,7 @@ namespace EMG.Lambda.LocalRunner.Internal
         public int Port { get; set; }
 
         public Func<ILambdaSerializer> SerializerFactory { get; set; }
-
+        public Func<ILambdaContext> LambdaContextFactory { get; set; }
 
         public IFunctionRunnerBuilder<TFunction> UsesAsyncFunction<TFunction>(Func<TFunction, TInput, ILambdaContext, Task<TOutput>> executor)
             where TFunction : class, new()
@@ -31,7 +31,7 @@ namespace EMG.Lambda.LocalRunner.Internal
 
                 var serializer = context.RequestServices.GetRequiredService<ILambdaSerializer>();
 
-                var lambdaContext = new TestLambdaContext();
+                var lambdaContext = LambdaContextFactory();
 
                 var input = serializer.Deserialize<TInput>(context.Request.Body);
 
@@ -62,7 +62,7 @@ namespace EMG.Lambda.LocalRunner.Internal
 
                 var serializer = context.RequestServices.GetRequiredService<ILambdaSerializer>();
 
-                var lambdaContext = new TestLambdaContext();
+                var lambdaContext = LambdaContextFactory();
 
                 var input = serializer.Deserialize<TInput>(context.Request.Body);
 

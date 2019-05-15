@@ -14,14 +14,15 @@ namespace EMG.Lambda.LocalRunner.Internal
         public int Port { get; set; }
 
         public Func<ILambdaSerializer> SerializerFactory { get; set; }
-
+        public Func<ILambdaContext> LambdaContextFactory { get; set; }
 
         public IReturningRunnerBuilder<TInput, TOutput> Returns<TOutput>()
         {
             return new InnerReturningRunnerBuilder<TInput, TOutput>
             {
                 Port = Port,
-                SerializerFactory = SerializerFactory
+                SerializerFactory = SerializerFactory,
+                LambdaContextFactory = LambdaContextFactory
             };
         }
 
@@ -40,7 +41,7 @@ namespace EMG.Lambda.LocalRunner.Internal
 
                 var serializer = context.RequestServices.GetRequiredService<ILambdaSerializer>();
 
-                var lambdaContext = new TestLambdaContext();
+                var lambdaContext = LambdaContextFactory();
 
                 var input = serializer.Deserialize<TInput>(context.Request.Body);
 
@@ -69,7 +70,7 @@ namespace EMG.Lambda.LocalRunner.Internal
 
                 var serializer = context.RequestServices.GetRequiredService<ILambdaSerializer>();
 
-                var lambdaContext = new TestLambdaContext();
+                var lambdaContext = LambdaContextFactory();
 
                 var input = serializer.Deserialize<TInput>(context.Request.Body);
 
