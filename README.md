@@ -66,6 +66,19 @@ This can be easily done by using the `UsePort(int port)` method. If omitted, the
 LambdaRunner.Create().UsePort(5001) ...
 ```
 
+### Customizing the response `Content-Type` header
+You can use the `WithResponseContentType(string contentType)` method to set a value that will be returned
+in the `Content-Type` header. If omitted the default `application/json` will be used.
+
+```csharp
+LambdaRunner.Create()
+            .Receives<string>()
+            .Returns<Foo>()
+            .WithResponseContentType("application/xml")
+            .UsesFunction<Function>((function, input, context) => function.FunctionHandler(input, context))
+            .Build()
+```
+
 ### Customizing the serializer
 If you need to use a different serialization strategy, you can specify the serializer while building the runner by using the `UseSerializer<T>(Func<T> factory)`.
 For consistency with the AWS Lambda SDK for .NET, the custom serializer you use must implement the `ILambdaSerializer` interface.

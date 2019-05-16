@@ -10,7 +10,6 @@ namespace EMG.Lambda.LocalRunner.Internal
 
         public Func<ILambdaSerializer> SerializerFactory { get; set; } = () => new JsonSerializer();
 
-
         public IRunnerBuilder UsePort(int port)
         {
             Port = port;

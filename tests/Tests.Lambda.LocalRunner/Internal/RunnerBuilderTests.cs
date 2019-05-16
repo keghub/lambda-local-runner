@@ -66,6 +66,14 @@ namespace Tests.Internal
         }
 
         [Test, AutoMoqData]
+        public void WithResponseContentType_initializes_content_type(InnerReturningRunnerBuilder<string, string> sut, Func<object, string, ILambdaContext, string> executor, string contentType)
+        {
+            var result = sut.WithResponseContentType(contentType);
+
+            Assert.That(sut.ResponseContentType, Is.EqualTo(contentType));
+        }
+
+        [Test, AutoMoqData]
         public void Build_returns_a_initialized_runner(InnerFunctionRunnerBuilder<object> sut)
         {
             var result = sut.Build() as LambdaRunner;
