@@ -14,6 +14,7 @@ namespace EMG.Lambda.LocalRunner.Internal
         public int Port { get; set; }
 
         public Func<ILambdaSerializer> SerializerFactory { get; set; }
+
         public Func<ILambdaContext> LambdaContextFactory { get; set; }
 
         public IReturningRunnerBuilder<TInput, TOutput> Returns<TOutput>()

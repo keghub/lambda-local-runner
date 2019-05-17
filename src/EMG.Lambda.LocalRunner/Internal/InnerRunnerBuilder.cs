@@ -10,6 +10,7 @@ namespace EMG.Lambda.LocalRunner.Internal
         public int Port { get; set; } = 5000;
 
         public Func<ILambdaSerializer> SerializerFactory { get; set; } = () => new JsonSerializer();
+
         public Func<ILambdaContext> LambdaContextFactory { get; set; } = () => new TestLambdaContext();
 
         public IRunnerBuilder UsePort(int port)

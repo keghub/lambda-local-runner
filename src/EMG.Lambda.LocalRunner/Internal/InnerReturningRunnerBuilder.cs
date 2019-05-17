@@ -14,7 +14,10 @@ namespace EMG.Lambda.LocalRunner.Internal
         public int Port { get; set; }
 
         public Func<ILambdaSerializer> SerializerFactory { get; set; }
+
         public Func<ILambdaContext> LambdaContextFactory { get; set; }
+
+        public string ResponseContentType { get; set; } = "application/json";
 
         public IFunctionRunnerBuilder<TFunction> UsesAsyncFunction<TFunction>(Func<TFunction, TInput, ILambdaContext, Task<TOutput>> executor)
             where TFunction : class, new()
@@ -40,6 +43,8 @@ namespace EMG.Lambda.LocalRunner.Internal
                 var output = await executor(function, input, lambdaContext);
 
                 stopwatch.Stop();
+
+                context.Response.ContentType = ResponseContentType;
 
                 serializer.Serialize(output, context.Response.Body);
 
@@ -72,6 +77,8 @@ namespace EMG.Lambda.LocalRunner.Internal
 
                 stopwatch.Stop();
 
+                context.Response.ContentType = ResponseContentType;
+
                 serializer.Serialize(output, context.Response.Body);
 
                 LogExecution(input, output, stopwatch.Elapsed);
@@ -89,6 +96,12 @@ namespace EMG.Lambda.LocalRunner.Internal
             sb.AppendLine();
 
             Console.Write(sb.ToString());
+        }
+
+        public IReturningRunnerBuilder<TInput, TOutput> WithResponseContentType(string contentType)
+        {
+            ResponseContentType = contentType;
+            return this;
         }
     }
 }
