@@ -1,0 +1,13 @@
+* text=auto
+
+# These files are text and should be normalized (convert crlf to lf)
+*.cs		text diff=csharp
+*.csproj	text
+*.sln		text
+*.md		text
+*.yml		text
+*.xml   text
+*.json		text
+
+# Images should be treated as binary
+*.png		binary
