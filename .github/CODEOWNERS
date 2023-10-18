@@ -1,9 +1,9 @@
-*                       		@emgdev/reviewers @keghub/reviewers @keghub/emg-reviewers
-*.cake                  		@emgdev/devops @keghub/devops @keghub/emg-devops
-.dockerignore           		@emgdev/devops @keghub/devops @keghub/emg-devops
-Dockerfile              		@emgdev/devops @keghub/devops @keghub/emg-devops
-package.json            		@emgdev/devops @keghub/devops @keghub/emg-devops
-package-lock.json       		@emgdev/devops @keghub/devops @keghub/emg-devops
-azure-pipelines.yml     		@emgdev/devops @keghub/devops @keghub/emg-devops
-task-execution-role.json		@emgdev/devops @keghub/devops @keghub/emg-devops
-.github/                		@emgdev/admins @keghub/admins @keghub/admins
+*                       		@keghub/emg-reviewers
+*.cake                  		@keghub/emg-devops
+.dockerignore           		@keghub/emg-devops
+Dockerfile              		@keghub/emg-devops
+package.json            		@keghub/emg-devops
+package-lock.json       		@keghub/emg-devops
+azure-pipelines.yml     		@keghub/emg-devops
+task-execution-role.json		@keghub/emg-devops
+.github/                		@keghub/admins
