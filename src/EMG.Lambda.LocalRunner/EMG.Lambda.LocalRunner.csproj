@@ -19,7 +19,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/emgdev/lambda-local-runner</PackageProjectUrl>
-    <PackageIconUrl>http://static.emg-services.net/masterpages/pics/logos/emg-icon-64.png</PackageIconUrl>
+    <PackageIconUrl>https://cdn-static.emg-services.net/masterpages/pics/logos/emg-icon-64.png</PackageIconUrl>
     <NoWarn>NU5105,NU5125</NoWarn>
   </PropertyGroup>
 
